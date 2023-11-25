@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:pacman/components/characters/ghost.dart';
 import 'package:pacman/components/characters/ghost2.dart';
 import 'package:pacman/components/characters/ghost3.dart';
-import 'package:pacman/functions/ghost_functions.dart';
 import 'package:pacman/models/barriers_list.dart';
 import 'package:pacman/components/path.dart';
 import 'package:pacman/components/pixels.dart';
@@ -366,9 +365,12 @@ class _HomePageState extends State<HomePage> {
         }
 
         if (food.contains(player)) {
+          print("Player position: $player");
+          print("Food before removal: $food");
           setState(() {
             food.remove(player);
           });
+          print("Food after removal: $food");
           score++;
         }
 
@@ -603,6 +605,24 @@ class _HomePageState extends State<HomePage> {
             GestureDetector(
               onTap: () {
                 Navigator.pop(context);
+                pauseGame();
+                restartGame();
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  padding: EdgeInsets.all(7),
+                  color: Colors.white,
+                  child: Text(
+                    'R E S T A R T',
+                    style: TextStyle(color: Colors.brown),
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
                 resumeGame();
               },
               child: ClipRRect(
@@ -768,29 +788,13 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GestureDetector(
-                      onTap: restartGame,
-                      child: Icon(
-                        Icons.restart_alt,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: gamePaused ? resumeGame : pauseGame,
-                      child: Icon(
-                        gamePaused ? Icons.play_arrow : Icons.pause,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: gamePaused ? resumeGame : pauseGame,
+                  child: Icon(
+                    gamePaused ? Icons.play_arrow : Icons.pause,
+                    color: Colors.white,
+                    size: 40,
+                  ),
                 ),
                 SizedBox(
                   height: 10,
