@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:pacman/components/characters/ghost.dart';
 import 'package:pacman/components/characters/ghost2.dart';
 import 'package:pacman/components/characters/ghost3.dart';
-import 'package:pacman/models/barriers_list.dart';
+import 'package:pacman/lists/barriers_list.dart';
 import 'package:pacman/components/path.dart';
 import 'package:pacman/components/pixels.dart';
 import 'package:pacman/components/characters/player.dart';
-import 'package:pacman/models/food_list.dart';
+import 'package:pacman/lists/food_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
