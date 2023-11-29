@@ -365,12 +365,12 @@ class _HomePageState extends State<HomePage> {
         }
 
         if (food.contains(player)) {
-          print("Player position: $player");
-          print("Food before removal: $food");
+          // print("Player position: $player");
+          // print("Food before removal: $food");
           setState(() {
             food.remove(player);
           });
-          print("Food after removal: $food");
+          // print("Food after removal: $food");
           score++;
         }
 
