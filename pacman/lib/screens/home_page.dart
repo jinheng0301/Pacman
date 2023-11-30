@@ -821,6 +821,16 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
+                Expanded(
+                  child: Text(
+                    'CREATED BY JINHENG',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
