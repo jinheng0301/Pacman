@@ -352,7 +352,7 @@ class _HomePageState extends State<HomePage> {
     getFood();
 
     Timer.periodic(
-      Duration(milliseconds: 180),
+      const Duration(milliseconds: 180),
       (timer) {
         if (gamePaused) {
           return; // If the game is paused, do nothing
@@ -412,7 +412,7 @@ class _HomePageState extends State<HomePage> {
     );
 
     Timer.periodic(
-      Duration(milliseconds: 200),
+      const Duration(milliseconds: 200),
       (timer) {
         if (gamePaused) {
           return; // If the game is paused, do nothing
@@ -501,7 +501,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context) {
         return AlertDialog(
           backgroundColor: Colors.brown,
-          title: Center(
+          title: const Center(
             child: Text(
               'G A M E  O V E R',
               style: TextStyle(
@@ -515,9 +515,9 @@ class _HomePageState extends State<HomePage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
-                  padding: EdgeInsets.all(7),
+                  padding: const EdgeInsets.all(7),
                   color: Colors.white,
-                  child: Text(
+                  child: const Text(
                     'P L A Y  A G A I N',
                     style: TextStyle(
                       color: Colors.brown,
@@ -538,7 +538,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context) {
         return AlertDialog(
           backgroundColor: Colors.brown,
-          title: Center(
+          title: const Center(
             child: Text(
               'C O N G R A T U L A T I O N S',
               style: TextStyle(
@@ -552,9 +552,9 @@ class _HomePageState extends State<HomePage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
-                  padding: EdgeInsets.all(7),
+                  padding: const EdgeInsets.all(7),
                   color: Colors.white,
-                  child: Text(
+                  child: const Text(
                     'P L A Y  A G A I N',
                     style: TextStyle(
                       color: Colors.green,
@@ -593,7 +593,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context) {
         return AlertDialog(
           backgroundColor: Colors.brown,
-          title: Center(
+          title: const Center(
             child: Text(
               'P A U S E D',
               style: TextStyle(
@@ -611,9 +611,9 @@ class _HomePageState extends State<HomePage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
-                  padding: EdgeInsets.all(7),
+                  padding: const EdgeInsets.all(7),
                   color: Colors.white,
-                  child: Text(
+                  child: const Text(
                     'R E S T A R T',
                     style: TextStyle(color: Colors.brown),
                   ),
@@ -628,9 +628,9 @@ class _HomePageState extends State<HomePage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
-                  padding: EdgeInsets.all(7),
+                  padding: const EdgeInsets.all(7),
                   color: Colors.white,
-                  child: Text(
+                  child: const Text(
                     'R E S U M E',
                     style: TextStyle(color: Colors.brown),
                   ),
@@ -717,7 +717,7 @@ class _HomePageState extends State<HomePage> {
               },
               child: Container(
                 child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: numberOfSquare,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: numberInRow,
@@ -729,9 +729,9 @@ class _HomePageState extends State<HomePage> {
                       // it means that the current grid item is the location of the pacman in the grid
                       if (mouthClosed && player == index) {
                         return Padding(
-                          padding: EdgeInsets.all(4),
+                          padding: const EdgeInsets.all(4),
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.yellow,
                               shape: BoxShape.circle,
                             ),
@@ -743,31 +743,31 @@ class _HomePageState extends State<HomePage> {
                           case 'left':
                             return Transform.rotate(
                               angle: pi,
-                              child: MyPlayer(),
+                              child: const MyPlayer(),
                             );
                           case 'right':
-                            return MyPlayer();
+                            return const MyPlayer();
                           case 'up':
                             return Transform.rotate(
                               angle: 3 * pi / 2,
-                              child: MyPlayer(),
+                              child: const MyPlayer(),
                             );
                           case 'down':
                             return Transform.rotate(
                               angle: pi / 2,
-                              child: MyPlayer(),
+                              child: const MyPlayer(),
                             );
                           default:
                             break;
                         }
-                        return MyPlayer();
+                        return const MyPlayer();
                       }
                     } else if (ghost == index) {
-                      return MyGhost();
+                      return const MyGhost();
                     } else if (ghost2 == index) {
-                      return MyGhost2();
+                      return const MyGhost2();
                     } else if (ghost3 == index) {
-                      return MyGhost3();
+                      return const MyGhost3();
                     } else if (barriers.contains(index)) {
                       return MyPixel(
                         innerColor: Colors.blue[800],
@@ -796,7 +796,7 @@ class _HomePageState extends State<HomePage> {
                     size: 40,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -804,14 +804,14 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Text(
                       'Score: ' + score.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 40,
                       ),
                     ),
                     GestureDetector(
                       onTap: startGame,
-                      child: Text(
+                      child: const Text(
                         'P L A Y',
                         style: TextStyle(
                           color: Colors.white,
@@ -821,7 +821,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                Expanded(
+                const Expanded(
                   child: Text(
                     'CREATED BY JINHENG',
                     style: TextStyle(
