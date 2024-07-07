@@ -715,73 +715,71 @@ class _HomePageState extends State<HomePage> {
                 }
                 print(direction);
               },
-              child: Container(
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: numberOfSquare,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: numberInRow,
-                  ),
-                  itemBuilder: (BuildContext context, int index) {
-                    if (player == index) {
-                      // player == index is used to check if the current grid item being built corresponds to the position of the player (pacman) in the grid.
-                      // it checks if the current grid item being built is at the same position as the pacman.
-                      // it means that the current grid item is the location of the pacman in the grid
-                      if (mouthClosed && player == index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(4),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.yellow,
-                              shape: BoxShape.circle,
-                            ),
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: numberOfSquare,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: numberInRow,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  if (player == index) {
+                    // player == index is used to check if the current grid item being built corresponds to the position of the player (pacman) in the grid.
+                    // it checks if the current grid item being built is at the same position as the pacman.
+                    // it means that the current grid item is the location of the pacman in the grid
+                    if (mouthClosed && player == index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.yellow,
+                            shape: BoxShape.circle,
                           ),
-                        );
-                      } else {
-                        // Render pacman with the appropriate rotation
-                        switch (direction) {
-                          case 'left':
-                            return Transform.rotate(
-                              angle: pi,
-                              child: const MyPlayer(),
-                            );
-                          case 'right':
-                            return const MyPlayer();
-                          case 'up':
-                            return Transform.rotate(
-                              angle: 3 * pi / 2,
-                              child: const MyPlayer(),
-                            );
-                          case 'down':
-                            return Transform.rotate(
-                              angle: pi / 2,
-                              child: const MyPlayer(),
-                            );
-                          default:
-                            break;
-                        }
-                        return const MyPlayer();
-                      }
-                    } else if (ghost == index) {
-                      return const MyGhost();
-                    } else if (ghost2 == index) {
-                      return const MyGhost2();
-                    } else if (ghost3 == index) {
-                      return const MyGhost3();
-                    } else if (barriers.contains(index)) {
-                      return MyPixel(
-                        innerColor: Colors.blue[800],
-                        outerColor: Colors.blue[900],
+                        ),
                       );
                     } else {
-                      return MyPath(
-                        // the food pacman is going to eat
-                        innerColor: Colors.yellow,
-                        outerColor: Colors.black,
-                      );
+                      // Render pacman with the appropriate rotation
+                      switch (direction) {
+                        case 'left':
+                          return Transform.rotate(
+                            angle: pi,
+                            child: const MyPlayer(),
+                          );
+                        case 'right':
+                          return const MyPlayer();
+                        case 'up':
+                          return Transform.rotate(
+                            angle: 3 * pi / 2,
+                            child: const MyPlayer(),
+                          );
+                        case 'down':
+                          return Transform.rotate(
+                            angle: pi / 2,
+                            child: const MyPlayer(),
+                          );
+                        default:
+                          break;
+                      }
+                      return const MyPlayer();
                     }
-                  },
-                ),
+                  } else if (ghost == index) {
+                    return const MyGhost();
+                  } else if (ghost2 == index) {
+                    return const MyGhost2();
+                  } else if (ghost3 == index) {
+                    return const MyGhost3();
+                  } else if (barriers.contains(index)) {
+                    return MyPixel(
+                      innerColor: Colors.blue[800],
+                      outerColor: Colors.blue[900],
+                    );
+                  } else {
+                    return MyPath(
+                      // the food pacman is going to eat
+                      innerColor: Colors.yellow,
+                      outerColor: Colors.black,
+                    );
+                  }
+                },
               ),
             ),
           ),
